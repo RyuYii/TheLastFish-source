@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Nadador.gd" type="Script" id=1]
+[ext_resource path="res://sprites/p_nada.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 25.0237
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr_nadador:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[node name="Nadador" type="KinematicBody2D"]
+position = Vector2( 128, 64 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="col_nadador" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="spr_nadador" type="Sprite" parent="."]
+position = Vector2( -0.113281, -14.1441 )
+scale = Vector2( 0.234375, 0.21875 )
+texture = ExtResource( 2 )
+flip_h = true
+hframes = 6
+frame = 5
+
+[node name="anim_nadador" type="AnimationPlayer" parent="."]
+playback_speed = 6.0
+anims/idle = SubResource( 2 )

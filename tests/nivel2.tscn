@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://player/Nadador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sounds/nivel2.wav" type="AudioStream" id=2]
+[ext_resource path="res://enemies/spawn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://tests/fondoMarino.tscn" type="PackedScene" id=4]
+[ext_resource path="res://tests/Control.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tests/full.tscn" type="PackedScene" id=6]
+
+[node name="nivel2" type="Node2D"]
+
+[node name="spawn" parent="." instance=ExtResource( 3 )]
+
+[node name="fondoMarino" parent="." instance=ExtResource( 4 )]
+
+[node name="Nadador" parent="." instance=ExtResource( 1 )]
+position = Vector2( 168, 96 )
+
+[node name="Camera2D" type="Camera2D" parent="Nadador"]
+current = true
+zoom = Vector2( 1.4, 1.4 )
+limit_left = -100
+limit_top = -100
+limit_bottom = 640
+smoothing_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="TouchScreenButton" parent="CanvasLayer" instance=ExtResource( 6 )]
+[connection signal="pressed" from="CanvasLayer/Control/Left" to="Nadador" method="_on_Left_pressed"]
+[connection signal="released" from="CanvasLayer/Control/Left" to="Nadador" method="_on_Left_released"]
+[connection signal="pressed" from="CanvasLayer/Control/Right" to="Nadador" method="_on_Right_pressed"]
+[connection signal="released" from="CanvasLayer/Control/Right" to="Nadador" method="_on_Right_released"]
+[connection signal="pressed" from="CanvasLayer/Control/Jump" to="Nadador" method="_on_Jump_pressed"]
+[connection signal="released" from="CanvasLayer/Control/Jump" to="Nadador" method="_on_Jump_released"]
+
+[editable path="CanvasLayer/Control"]

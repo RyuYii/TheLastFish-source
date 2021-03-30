@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://sprites/botones/l1.png" type="Texture" id=1]
+[ext_resource path="res://scripts/lose.gd" type="Script" id=2]
+[ext_resource path="res://sprites/botones/l2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/botones/r1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/botones/r2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/botones/r3.png" type="Texture" id=6]
+[ext_resource path="res://sprites/botones/l3.png" type="Texture" id=7]
+[ext_resource path="res://fonts/Iceberg.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://sprites/fondolose.jpg" type="Texture" id=9]
+[ext_resource path="res://tests/LoseM.tscn" type="PackedScene" id=10]
+[ext_resource path="res://tests/Derrota_sound.tscn" type="PackedScene" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 8 )
+
+[node name="Lose3" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 304, 200 )
+texture = ExtResource( 9 )
+
+[node name="Return" type="TextureButton" parent="."]
+margin_left = 40.0
+margin_top = 184.0
+margin_right = 304.0
+margin_bottom = 304.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 7 )
+texture_focused = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Return"]
+margin_left = 118.584
+margin_top = 50.8316
+margin_right = 183.584
+margin_bottom = 66.8316
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Return"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="TextureButton" parent="."]
+margin_left = 320.0
+margin_top = 184.0
+margin_right = 568.0
+margin_bottom = 296.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu"]
+margin_left = 81.8648
+margin_top = 48.9439
+margin_right = 126.865
+margin_bottom = 64.9439
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoseM" parent="." instance=ExtResource( 10 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 112.0
+margin_right = 544.0
+
+[node name="Derrota_sound" parent="." instance=ExtResource( 11 )]
+[connection signal="pressed" from="Return" to="." method="_on_Return3_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]

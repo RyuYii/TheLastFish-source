@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/378434__vaguaisa__agua-esupida.wav-0ea10b45e8b5c529b804454396cb530c.sample"
+
+[deps]
+
+source_file="res://sounds/378434__vaguaisa__agua-esupida.wav"
+dest_files=[ "res://.import/378434__vaguaisa__agua-esupida.wav-0ea10b45e8b5c529b804454396cb530c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

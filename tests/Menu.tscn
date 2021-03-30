@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/botones/btn1.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=2]
+[ext_resource path="res://sprites/botones/btn2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/botones/btn3.png" type="Texture" id=4]
+[ext_resource path="res://sprites/fondoinicio.jpg" type="Texture" id=5]
+[ext_resource path="res://fonts/Iceberg.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://sounds/menu.ogg" type="AudioStream" id=7]
+[ext_resource path="res://tests/full.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 56
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 314, 204.75 )
+scale = Vector2( 1.06, 1.28233 )
+texture = ExtResource( 5 )
+
+[node name="Button" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -152.0
+margin_top = -30.0
+margin_right = 152.0
+margin_bottom = 120.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Button"]
+margin_left = 120.7
+margin_top = 66.3304
+margin_right = 187.7
+margin_bottom = 93.3304
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Play"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -220.5
+margin_top = 100.0
+margin_right = 220.5
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 2 )
+text = "The Last Fish"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="TouchScreenButton" parent="." instance=ExtResource( 8 )]
+position = Vector2( 559.416, 14.9405 )
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
